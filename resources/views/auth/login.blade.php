@@ -31,13 +31,13 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="mb-3">
-                            <label class="form-label">Username</label>
+                            <label class="form-label">Email</label>
                             <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                <input type="text" class="form-control @error('username') is-invalid @enderror" 
-                                       name="username" value="{{ old('username') }}" required autofocus>
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" 
+                                       name="email" value="{{ old('email') }}" required autofocus>
                             </div>
-                            @error('username')
+                            @error('email')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -72,6 +72,8 @@
                     <div class="form-group">
                         <a href="{{ route('register') }}" class="btn btn-secondary">Register</a>
                     </div>
+
+                    <p>Belum punya akun? <a href="{{ route('register') }}">Daftar di sini</a></p>
                 </div>
             </div>
         </div>

@@ -2,34 +2,52 @@
 
 @section('content')
     <div class="container">
-        <h1>Tambah Nilai Siswa</h1>
+        <h2>Tambah Nilai</h2>
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form action="{{ route('nilai.store') }}" method="POST">
             @csrf
-
-            <div class="mb-3">
-                <label class="form-label">Nama Siswa</label>
-                <select name="siswa_id" class="form-control" required>
-                    @foreach($siswas as $siswa)
-                        <option value="{{ $siswa->id }}">{{ $siswa->nama }}</option>
+            
+            <div class="form-group">
+                <label for="siswa_nama">Nama Siswa:</label>
+                <select name="siswa_nama" class="form-control" required>
+                    <option value="">Pilih Siswa</option>
+                    @foreach ($siswa as $s)
+                        <option value="{{ $s->nama }}">{{ $s->nama }}</option>
                     @endforeach
                 </select>
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">Nilai Harian</label>
-                <input type="number" step="0.01" name="nilai_harian" id="nilai_harian" class="form-control" required>
+            <div class="form-group">
+                <label for="nilai_harian">Nilai Harian:</label>
+                <input type="number" name="nilai_harian" class="form-control" required placeholder="Masukkan Nilai Harian">
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">Ulangan 1</label>
-                <input type="number" step="0.01" name="ulangan_1" id="ulangan_1" class="form-control" required>
+            <div class="form-group">
+                <label for="ulangan_harian_1">Ulangan Harian 1:</label>
+                <input type="number" name="ulangan_harian_1" class="form-control" required placeholder="Masukkan Nilai Ulangan Harian 1">
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">Ulangan 2</label>
-                <input type="number" step="0.01" name="ulangan_2" id="ulangan_2" class="form-control" required>
+            <div class="form-group">
+                <label for="ulangan_harian_2">Ulangan Harian 2:</label>
+                <input type="number" name="ulangan_harian_2" class="form-control" required placeholder="Masukkan Nilai Ulangan Harian 2">
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">Nilai Akhir</label>
-                <input type="number" step="0.01" name="nilai_akhir" id="nilai
+            <div class="form-group">
+                <label for="nilai_akhir_semester">Nilai Akhir Semester:</label>
+                <input type="number" name="nilai_akhir_semester" class="form-control" required placeholder="Masukkan Nilai Akhir Semester">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Simpan Nilai</button>
+        </form>
+    </div>
+@endsection

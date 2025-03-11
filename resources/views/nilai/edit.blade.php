@@ -2,43 +2,39 @@
 
 @section('content')
     <div class="container">
-        <h1>Edit Nilai</h1>
+        <h2>Edit Nilai</h2>
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form action="{{ route('nilai.update', $nilai->id) }}" method="POST">
             @csrf
             @method('PUT')
 
-            <div class="mb-3">
-                <label class="form-label">Nama Siswa</label>
-                <select name="siswa_id" class="form-control">
-                    @foreach($siswas as $siswa)
-                        <option value="{{ $siswa->id }}" {{ $nilai->siswa_id == $siswa->id ? 'selected' : '' }}>
+            <div class="form-group">
+                <label for="siswa_id">Siswa:</label>
+                <select name="siswa_id" class="form-control" required>
+                    @foreach ($siswas as $siswa)
+                        <option value="{{ $siswa->id }}" {{ $siswa->id == $nilai->siswa_id ? 'selected' : '' }}>
                             {{ $siswa->nama }}
                         </option>
                     @endforeach
                 </select>
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">Nilai Harian</label>
-                <input type="text" name="nilai_harian" value="{{ $nilai->nilai_harian }}" class="form-control">
+            <div class="form-group">
+                <label for="nilai">Nilai:</label>
+                <input type="number" name="nilai" class="form-control" value="{{ old('nilai', $nilai->nilai) }}" required>
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">Ulangan 1</label>
-                <input type="text" name="ulangan_1" value="{{ $nilai->ulangan_1 }}" class="form-control">
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Ulangan 2</label>
-                <input type="text" name="ulangan_2" value="{{ $nilai->ulangan_2 }}" class="form-control">
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Nilai Akhir</label>
-                <input type="text" name="nilai_akhir" value="{{ $nilai->nilai_akhir }}" class="form-control">
-            </div>
-
-            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
 @endsection

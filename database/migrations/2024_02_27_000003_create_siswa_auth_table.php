@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSiswaAuthTableV2 extends Migration
+class CreateSiswaAuthTableV3 extends Migration
 {
     public function up()
     {

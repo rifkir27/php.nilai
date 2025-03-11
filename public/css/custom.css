@@ -1,0 +1,84 @@
+/* public/css/custom.css */
+
+/* Mengatur warna latar belakang dan teks */
+body {
+    background-color: #e0f7fa; /* Biru muda */
+    color: #000; /* Warna teks default */
+    font-family: 'Arial', sans-serif; /* Mengatur font */
+}
+
+/* Mengatur warna navbar */
+.navbar {
+    background-color: #4fc3f7; /* Biru muda untuk navbar */
+}
+
+/* Mengatur warna tombol */
+.btn-primary {
+    background-color: #4fc3f7; /* Biru muda */
+    border-color: #4fc3f7; /* Border tombol */
+}
+
+.btn-primary:hover {
+    background-color: #29b6f6; /* Biru lebih gelap saat hover */
+    border-color: #29b6f6; /* Border lebih gelap saat hover */
+}
+
+/* Mengatur warna tabel */
+.table {
+    background-color: #ffffff; /* Latar belakang tabel putih */
+    border-radius: 5px; /* Sudut tabel melengkung */
+    overflow: hidden; /* Menghindari overflow */
+}
+
+.table th {
+    background-color: #4fc3f7; /* Header tabel biru muda */
+    color: #fff; /* Teks header putih */
+}
+
+.table tr:nth-child(even) {
+    background-color: #b2ebf2; /* Baris genap tabel biru muda */
+}
+
+.table tr:hover {
+    background-color: #80deea; /* Warna saat hover pada baris tabel */
+}
+
+/* Mengatur warna alert */
+.alert {
+    background-color: #b2ebf2; /* Latar belakang alert biru muda */
+    color: #000; /* Teks alert hitam */
+}
+
+/* Mengatur margin dan padding */
+.container {
+    margin-top: 20px; /* Jarak atas untuk kontainer */
+}
+
+h1 {
+    margin-bottom: 20px; /* Jarak bawah untuk judul */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Jarak bawah untuk grup form */
+}
+
+/* Mengatur tampilan tombol */
+.btn {
+    margin-right: 5px; /* Jarak antar tombol */
+}
+
+/* Card styling */
+.card {
+    border: none; /* Menghilangkan border default */
+    border-radius: 10px; /* Sudut melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan */
+}
+
+.card-header {
+    background-color: #4fc3f7; /* Warna header card */
+    color: white; /* Teks header putih */
+}
+
+.card-body {
+    padding: 20px; /* Padding untuk isi card */
+}

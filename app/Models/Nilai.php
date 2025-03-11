@@ -11,10 +11,8 @@ class Nilai extends Model
     protected $table = 'nilais';
     protected $fillable = [
         'siswa_id',
-        'mata_pelajaran',
-        'nilai_tugas',
-        'nilai_uts',
-        'nilai_uas'
+        'jenis',
+        'nilai'
     ];
 
     // Relasi dengan tabel Siswa

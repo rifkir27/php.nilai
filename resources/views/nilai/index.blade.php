@@ -1,28 +1,36 @@
-@php
-use App\Helpers\NilaiHelper;
-@endphp
+@extends('layouts.app')
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nama Siswa</th>
-            <th>Nilai Akhir</th>
-            <th>Grade</th>
-            <th>Keterangan</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($nilais as $nilai)
-        <tr>
-            <td>{{ $nilai->siswa->nama }}</td>
-            <td>
-                <span class="badge bg-{{ NilaiHelper::getNilaiBadgeColor($nilai->nilai_akhir) }}">
-                    {{ number_format($nilai->nilai_akhir, 2) }}
-                </span>
-            </td>
-            <td>{{ NilaiHelper::getNilaiGrade($nilai->nilai_akhir) }}</td>
-            <td>{{ NilaiHelper::getNilaiKeterangan($nilai->nilai_akhir) }}</td>
-        </tr>
-        @endforeach
-    </tbody>
-</table> 
+@section('content')
+<div class="container">
+    <h2>Data Nilai</h2>
+
+    @if (session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Nilai</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($nilai as $n)
+                <tr>
+                    <td>{{ $n->nama }}</td>
+                    <td>{{ $n->nilai }}</td>
+                    <td>
+                        <a href="{{ route('nilai.edit', $n->id) }}" class="btn btn-warning">Edit</a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endsection 

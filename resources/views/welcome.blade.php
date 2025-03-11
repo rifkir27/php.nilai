@@ -3,104 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Datang di Aplikasi Siswa</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Selamat Datang</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/1200x800/?school') center/cover;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
+        body {
+            background-color: #e3f2fd; /* Warna latar belakang biru muda */
+            color: #0d47a1; /* Warna teks biru tua */
+        }
+        .container {
+            margin-top: 100px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff; /* Warna latar belakang putih untuk kontainer */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek kedalaman */
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .btn {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 5px; /* Sudut tombol yang membulat */
+            transition: background-color 0.3s; /* Transisi untuk efek hover */
+        }
+        .btn-primary {
+            background-color: #1976d2; /* Warna biru untuk tombol login */
             color: white;
         }
-
-        .login-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
+        .btn-primary:hover {
+            background-color: #1565c0; /* Warna biru lebih gelap saat hover */
         }
-
-        .form-control {
-            border-radius: 10px;
+        .btn-success {
+            background-color: #43a047; /* Warna hijau untuk tombol daftar */
+            color: white;
         }
-
-        .btn-login {
-            border-radius: 10px;
-            padding: 12px 20px;
+        .btn-success:hover {
+            background-color: #388e3c; /* Warna hijau lebih gelap saat hover */
         }
     </style>
 </head>
 <body>
-    <section class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Kolom Kiri - Text -->
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <h1 class="display-4 fw-bold mb-4">Selamat Datang di Aplikasi Siswa</h1>
-                    <p class="lead mb-4">Platform manajemen data siswa dan nilai yang memudahkan proses pembelajaran dan evaluasi</p>
-                </div>
-
-                <!-- Kolom Kanan - Login Form -->
-                <div class="col-lg-5 offset-lg-1">
-                    <div class="card login-card">
-                        <div class="card-body p-4">
-                            <div class="text-center mb-4">
-                                <i class="fas fa-user-circle fa-3x text-primary"></i>
-                                <h3 class="mt-3">Login</h3>
-                                <p class="text-muted">Masukkan username dan password Anda</p>
-                            </div>
-
-                            @if(session('error'))
-                                <div class="alert alert-danger">
-                                    <i class="fas fa-exclamation-circle me-2"></i>{{ session('error') }}
-                                </div>
-                            @endif
-
-                            <form method="POST" action="{{ route('login') }}">
-                                @csrf
-                                <div class="mb-3">
-                                    <label class="form-label">Username</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                        <input type="text" class="form-control @error('username') is-invalid @enderror" 
-                                               name="username" value="{{ old('username') }}" required autofocus>
-                                    </div>
-                                    @error('username')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-4">
-                                    <label class="form-label">Password</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                        <input type="password" class="form-control @error('password') is-invalid @enderror" 
-                                               name="password" required>
-                                    </div>
-                                    @error('password')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-4">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="remember" id="remember">
-                                        <label class="form-check-label" for="remember">Ingat Saya</label>
-                                    </div>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary w-100 btn-login">
-                                    <i class="fas fa-sign-in-alt me-2"></i>Login
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="container">
+        <h1>Selamat Datang di Aplikasi Penilaian Siswa</h1>
+        <div class="mt-4">
+            <a href="{{ route('login.form') }}" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <a href="{{ route('register') }}" class="btn btn-success"><i class="fas fa-user-plus"></i> Daftar</a>
         </div>
-    </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
 </body>
 </html>

@@ -7,21 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Siswa extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'nama',
-        'nis',
-        'jenis_kelamin',
-        'kelas',
-        'nilai_harian',
-        'ulangan_1',
-        'ulangan_2',
-        'nilai_akhir',
-        'rata_rata'
-    ];
 
-    // Relasi dengan tabel Nilai
-    public function nilais()
+    protected $table = 'siswas'; // Pastikan nama tabel sesuai
+    protected $fillable = ['nama', 'nis', 'kelas']; // Kolom yang dapat diisi
+
+    public function nilai()
     {
-        return $this->hasMany(Nilai::class, 'siswa_id', 'id');
+        return $this->hasMany(Nilai::class);
     }
 }
